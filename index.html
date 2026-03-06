@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Jadwal TI 4B Non Reguler - Banjarmasin — Semester Genap (4) 2025/2026
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/184f34cb79.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      :root {
+        --bg: #1c1b16;
+        --surface: #242318;
+        --border: #2e2d22;
+        --subtle: #3a3929;
+        --accent: #d97757;
+        --accent-dim: rgba(217, 119, 87, 0.12);
+        --accent-mid: rgba(217, 119, 87, 0.35);
+        --text: #e8e4d8;
+        --muted: #6b6756;
+        --blue: #74b9ff;
+        --blue-dim: rgba(116, 185, 255, 0.12);
+        --blue-mid: rgba(116, 185, 255, 0.3);
+        --teal: #2ec4b6;
+        --teal-dim: rgba(46, 196, 182, 0.12);
+        --teal-mid: rgba(46, 196, 182, 0.3);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 21.6px;
+      } /* 16px × 1.35 — semua rem ikut scale otomatis */
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        padding: 1.5rem 1rem 4rem;
+      }
+
+      /* ── Top Bar ── */
+      .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1215px;
+        margin: 0 auto 1.25rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .top-logo {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--accent);
+      }
+      .top-logo span {
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .zoom-ctrl {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 3px 6px;
+        font-size: 0.6rem;
+        color: var(--muted);
+      }
+      .zoom-ctrl button {
+        background: none;
+        border: none;
+        color: var(--accent);
+        font-size: 0.85rem;
+        cursor: pointer;
+        padding: 2px 7px;
+        border-radius: 3px;
+        font-family: "Inter", sans-serif;
+        transition: background 0.15s;
+      }
+      .zoom-ctrl button:hover {
+        background: var(--accent-dim);
+      }
+      #zoom-pct {
+        min-width: 34px;
+        text-align: center;
+      }
+
+      .btn-export {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        padding: 0.35rem 0.8rem;
+        border-radius: 4px;
+        border: 1px solid;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .btn-png {
+        background: var(--accent-dim);
+        border-color: var(--accent-mid);
+        color: var(--accent);
+      }
+      .btn-png:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+      }
+      .btn-pdf {
+        background: var(--blue-dim);
+        border-color: var(--blue-mid);
+        color: var(--blue);
+      }
+      .btn-pdf:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+      }
+
+      /* ── Zoom viewport ── */
+      .zoom-wrapper {
+        overflow-x: auto;
+        overflow-y: visible;
+        padding: 0.5rem 0;
+      }
+      .zoom-inner {
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      /* ══════════════════════
+     JADWAL CARD
+  ══════════════════════ */
+      #jadwal-card {
+        width: 1161px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+      }
+      #jadwal-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--accent);
+      }
+
+      /* Header */
+      .card-hdr {
+        padding: 1.6rem 1.8rem 1.3rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hdr-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .hdr-univ {
+        font-size: 0.55rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .hdr-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        line-height: 1.15;
+      }
+      .hdr-title .hl {
+        color: var(--accent);
+      }
+      .hdr-sub {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 0.45rem;
+      }
+      .hdr-right {
+        text-align: right;
+        flex-shrink: 0;
+      }
+      .hdr-sem {
+        font-size: 0.55rem;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+        margin-bottom: 0.3rem;
+      }
+      .hdr-year {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .hdr-chips {
+        display: flex;
+        gap: 5px;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.65rem;
+        border-radius: 3px;
+        border: 1px solid;
+      }
+      .chip-accent {
+        color: var(--accent);
+        border-color: var(--accent-mid);
+        background: var(--accent-dim);
+      }
+      .chip-muted {
+        color: var(--muted);
+        border-color: var(--border);
+        background: transparent;
+      }
+
+      /* Sesi */
+      .sesi-wrap {
+        padding: 0 1.8rem;
+      }
+      .sesi-hdr {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 1.1rem 0 0.8rem;
+      }
+      .sesi-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.65rem;
+        border-radius: 3px;
+        border: 1px solid;
+      }
+      .sesi-badge .dot-b {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+      .sb-a {
+        color: var(--teal);
+        border-color: var(--teal-mid);
+        background: var(--teal-dim);
+      }
+      .sb-b {
+        color: var(--blue);
+        border-color: var(--blue-mid);
+        background: var(--blue-dim);
+      }
+      .sesi-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .sesi-dates {
+        margin-left: auto;
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .date-chip {
+        font-size: 0.52rem;
+        font-weight: 500;
+        padding: 2px 6px;
+        border-radius: 3px;
+        letter-spacing: 0.03em;
+      }
+      .dc-a {
+        background: var(--teal-dim);
+        border: 1px solid var(--teal-mid);
+        color: var(--teal);
+        opacity: 0.8;
+      }
+      .dc-b {
+        background: var(--blue-dim);
+        border: 1px solid var(--blue-mid);
+        color: var(--blue);
+        opacity: 0.8;
+      }
+
+      /* Table */
+      .jtable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.4rem;
+      }
+      .jtable thead th {
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+      }
+      .jtable tbody tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.12s;
+      }
+      .jtable tbody tr:last-child {
+        border-bottom: none;
+      }
+      .jtable tbody tr:hover {
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .jtable tbody td {
+        padding: 0.7rem 0.75rem;
+        vertical-align: middle;
+      }
+
+      .td-time {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--teal);
+        white-space: nowrap;
+        width: 175px;
+      }
+      .td-time.b {
+        color: var(--blue);
+      }
+      .td-mapel {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .td-mapel .abbr {
+        display: block;
+        font-size: 0.5rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .td-dosen {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: var(--muted);
+        width: 270px;
+      }
+      .td-ruang {
+        text-align: center;
+        width: 95px;
+      }
+      .ruang-tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding: 0.2rem 0.55rem;
+        border-radius: 3px;
+        background: var(--teal-dim);
+        border: 1px solid var(--teal-mid);
+        color: var(--teal);
+      }
+      .ruang-tag.b {
+        background: var(--blue-dim);
+        border-color: var(--blue-mid);
+        color: var(--blue);
+      }
+
+      .tr-ishoma td {
+        padding: 0.3rem 0.75rem;
+      }
+      .ishoma-lbl {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .sesi-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 0 1.8rem;
+      }
+
+      /* Footer */
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        border-top: 1px solid var(--border);
+        padding: 0.85rem 1.8rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      footer .src {
+        opacity: 0.7;
+        font-size: 0.68rem;
+      }
+
+      /* Loading */
+      .loading-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(28, 27, 22, 0.88);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .loading-overlay.show {
+        display: flex;
+      }
+      .loading-overlay p {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .spinner {
+        width: 28px;
+        height: 28px;
+        border: 2px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--subtle);
+        border-radius: 3px;
+      }
+
+      /* ── Realtime Clock ── */
+      .clock-bar {
+        max-width: 1215px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0;
+      }
+      .clock-display {
+        font-size: 4.2rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--text);
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+      }
+      .clock-display .sep {
+        color: var(--accent);
+        margin: 0 0.05em;
+        animation: blink-sep 1s step-end infinite;
+      }
+      @keyframes blink-sep {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* ── Session dimming ── */
+      .sesi-group {
+        transition: opacity 0.4s;
+      }
+      .sesi-group.sesi-dim {
+        opacity: 0.22;
+        pointer-events: none;
+      }
+
+      /* ── Active row highlight ── */
+      .tr-active td {
+        background: var(--accent-dim) !important;
+        border-bottom-color: var(--accent-mid) !important;
+      }
+      .tr-active .td-time {
+        color: var(--accent) !important;
+      }
+      .tr-active .td-time.b {
+        color: var(--accent) !important;
+      }
+      .tr-active .td-mapel {
+        color: var(--accent) !important;
+      }
+      .tr-active .ruang-tag {
+        background: var(--accent-dim) !important;
+        border-color: var(--accent-mid) !important;
+        color: var(--accent) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-overlay" id="loading">
+      <div class="spinner"></div>
+      <p id="loading-txt">Memproses...</p>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="top-logo">Jadwal<span>4B</span></div>
+      <div class="btn-group">
+        <div class="zoom-ctrl">
+          <button onclick="zoom(-10)">−</button>
+          <span id="zoom-pct">100%</span>
+          <button onclick="zoom(+10)">+</button>
+        </div>
+        <button class="btn-export btn-png" onclick="exportPNG()">
+          <i class="fa-solid fa-image"></i> Download PNG
+        </button>
+        <button class="btn-export btn-pdf" onclick="exportPDF()">
+          <i class="fa-solid fa-file-pdf"></i> Download PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Realtime Clock -->
+    <div class="clock-bar">
+      <div class="clock-display">
+        <span id="clock-hh">00</span><span class="sep"> : </span
+        ><span id="clock-mm">00</span>
+      </div>
+    </div>
+
+    <!-- Zoom Wrapper -->
+    <div class="zoom-wrapper">
+      <div class="zoom-inner" id="zoom-inner">
+        <div id="jadwal-card">
+          <!-- Header -->
+          <div class="card-hdr">
+            <div class="hdr-row">
+              <div>
+                <div class="hdr-univ">
+                  UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
+                  &nbsp;·&nbsp; Prodi Teknik Informatika
+                </div>
+                <div class="hdr-title">
+                  Jadwal Kuliah <span class="hl">Kelas 4B</span>
+                </div>
+                <div class="hdr-sub">Non-Reguler &nbsp;·&nbsp; Banjarmasin</div>
+              </div>
+              <div class="hdr-right">
+                <div class="hdr-sem">
+                  Semester Genap &nbsp;·&nbsp; Tahun Akademik
+                </div>
+                <div class="hdr-year">2025 / 2026</div>
+                <div class="hdr-chips">
+                  <span class="chip chip-accent"
+                    ><i class="fa-regular fa-calendar fa-xs"></i> Sabtu</span
+                  >
+                  <span class="chip chip-muted">Ruang 4B</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SESI A -->
+          <div class="sesi-wrap sesi-group" id="sesi-a">
+            <div class="sesi-hdr">
+              <span class="sesi-badge sb-a"
+                ><span class="dot-b"></span> Sesi A</span
+              >
+              <span class="sesi-name">Sabtu Ganjil</span>
+              <div class="sesi-dates">
+                <span class="date-chip dc-a">07 Mar</span>
+                <span class="date-chip dc-a">28 Mar</span>
+                <span class="date-chip dc-a">11 Apr</span>
+                <span class="date-chip dc-a">25 Apr</span>
+                <span class="date-chip dc-a">09 Mei</span>
+              </div>
+            </div>
+            <table class="jtable">
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Mata Kuliah</th>
+                  <th>Dosen</th>
+                  <th style="text-align: center">Ruang</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-start="07:20" data-end="08:50">
+                  <td class="td-time">07.20 – 08.50</td>
+                  <td class="td-mapel">
+                    Cloud Computing <span class="abbr">CLOUD</span>
+                  </td>
+                  <td class="td-dosen">Herry AC, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+                <tr data-start="09:00" data-end="10:30">
+                  <td class="td-time">09.00 – 10.30</td>
+                  <td class="td-mapel">
+                    Sosial Budaya <span class="abbr">SOSBUD</span>
+                  </td>
+                  <td class="td-dosen">Nina M., M.Pd., M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+                <tr data-start="10:40" data-end="12:10">
+                  <td class="td-time">10.40 – 12.10</td>
+                  <td class="td-mapel">
+                    Kecerdasan Buatan <span class="abbr">CERDAS / AI</span>
+                  </td>
+                  <td class="td-dosen">Mayang Sari, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+                <tr class="tr-ishoma">
+                  <td colspan="4">
+                    <span class="ishoma-lbl"
+                      ><i
+                        class="fa-solid fa-utensils"
+                        style="margin-right: 5px; opacity: 0.45"
+                      ></i
+                      >ISHOMA — 12.10 s.d. 13.00</span
+                    >
+                  </td>
+                </tr>
+                <tr data-start="13:00" data-end="14:30">
+                  <td class="td-time">13.00 – 14.30</td>
+                  <td class="td-mapel">
+                    Sistem Informasi Geografis
+                    <span class="abbr">S.I. GEOGRAFIS</span>
+                  </td>
+                  <td class="td-dosen">Hidayatul Rahman, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+                <tr data-start="14:40" data-end="16:10">
+                  <td class="td-time">14.40 – 16.10</td>
+                  <td class="td-mapel">
+                    Data Mining <span class="abbr">DT MINING</span>
+                  </td>
+                  <td class="td-dosen">Dian Agustini, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+                <tr data-start="16:20" data-end="17:50">
+                  <td class="td-time">16.20 – 17.50</td>
+                  <td class="td-mapel">
+                    Komputasi Paralel <span class="abbr">PARALEL</span>
+                  </td>
+                  <td class="td-dosen">Lilis Anggraini, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag">4B</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="sesi-divider"></div>
+
+          <!-- SESI B -->
+          <div class="sesi-wrap sesi-group" id="sesi-b">
+            <div class="sesi-hdr">
+              <span class="sesi-badge sb-b"
+                ><span class="dot-b"></span> Sesi B</span
+              >
+              <span class="sesi-name">Sabtu Genap</span>
+              <div class="sesi-dates">
+                <span class="date-chip dc-b">23 Mei</span>
+                <span class="date-chip dc-b">06 Jun</span>
+                <span class="date-chip dc-b">20 Jun</span>
+              </div>
+            </div>
+            <table class="jtable">
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Mata Kuliah</th>
+                  <th>Dosen</th>
+                  <th style="text-align: center">Ruang</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-start="07:20" data-end="08:50">
+                  <td class="td-time b">07.20 – 08.50</td>
+                  <td class="td-mapel">
+                    Pemrograman Web 2 <span class="abbr">WEB 2</span>
+                  </td>
+                  <td class="td-dosen">M. Iqbal Firdaus, M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag b">4B</span></td>
+                </tr>
+                <tr data-start="09:00" data-end="10:30">
+                  <td class="td-time b">09.00 – 10.30</td>
+                  <td class="td-mapel">
+                    Filsafat Ilmu <span class="abbr">FILSAFAT</span>
+                  </td>
+                  <td class="td-dosen">Abdullah, M.Pd</td>
+                  <td class="td-ruang"><span class="ruang-tag b">4B</span></td>
+                </tr>
+                <tr data-start="10:40" data-end="12:10">
+                  <td class="td-time b">10.40 – 12.10</td>
+                  <td class="td-mapel">
+                    Pemr. Berorientasi Objek 1 <span class="abbr">PBO 1</span>
+                  </td>
+                  <td class="td-dosen">M. Edya R., M.Kom</td>
+                  <td class="td-ruang"><span class="ruang-tag b">4B</span></td>
+                </tr>
+                <tr data-start="13:00" data-end="14:30">
+                  <td class="td-time b">13.00 – 14.30</td>
+                  <td class="td-mapel">
+                    Tauhid <span class="abbr">TAUHID</span>
+                  </td>
+                  <td class="td-dosen">H. Zaini, M.Ag</td>
+                  <td class="td-ruang"><span class="ruang-tag b">4B</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer -->
+          <footer>
+            <div class="src">
+              © <span id="tahun"></span> Jadwal4B &nbsp;·&nbsp; Kelas 4B
+              &nbsp;·&nbsp; Non Reguler - Banjarmasin
+            </div>
+          </footer>
+        </div>
+        <!-- /jadwal-card -->
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      document.getElementById("tahun").textContent = new Date().getFullYear();
+
+      // ── Zoom ──
+      let zoomLevel = 100;
+      function zoom(delta) {
+        zoomLevel = Math.min(200, Math.max(40, zoomLevel + delta));
+        document.getElementById("zoom-inner").style.zoom = zoomLevel / 100;
+        document.getElementById("zoom-pct").textContent = zoomLevel + "%";
+      }
+
+      // ── Loading ──
+      function showLoading(txt) {
+        document.getElementById("loading-txt").textContent = txt;
+        document.getElementById("loading").classList.add("show");
+      }
+      function hideLoading() {
+        document.getElementById("loading").classList.remove("show");
+      }
+
+      // ── Export ──
+      async function captureCard(scale = 3) {
+        return html2canvas(document.getElementById("jadwal-card"), {
+          scale,
+          backgroundColor: "#242318",
+          useCORS: true,
+          logging: false,
+        });
+      }
+      async function exportPNG() {
+        showLoading("Menyiapkan PNG...");
+        try {
+          const canvas = await captureCard(3);
+          const a = document.createElement("a");
+          a.download = "jadwal-TI-4B-2025-2026.png";
+          a.href = canvas.toDataURL("image/png");
+          a.click();
+        } catch (e) {
+          alert("Gagal: " + e.message);
+        }
+        hideLoading();
+      }
+      async function exportPDF() {
+        showLoading("Menyiapkan PDF...");
+        try {
+          const { jsPDF } = window.jspdf;
+          const canvas = await captureCard(2);
+          const img = canvas.toDataURL("image/png");
+          const pdf = new jsPDF({
+            orientation: "landscape",
+            unit: "mm",
+            format: "a4",
+          });
+          const pW = pdf.internal.pageSize.getWidth();
+          const pH = pdf.internal.pageSize.getHeight();
+          const ratio = canvas.width / canvas.height;
+          let w = pW - 10,
+            h = w / ratio;
+          if (h > pH - 10) {
+            h = pH - 10;
+            w = h * ratio;
+          }
+          pdf.addImage(img, "PNG", (pW - w) / 2, (pH - h) / 2, w, h);
+          pdf.save("jadwal-TI-4B-2025-2026.pdf");
+        } catch (e) {
+          alert("Gagal: " + e.message);
+        }
+        hideLoading();
+      }
+
+      // ── Helper ──
+      function pad2(n) {
+        return n.toString().padStart(2, "0");
+      }
+      function timeToMin(str) {
+        const [h, m] = str.split(":").map(Number);
+        return h * 60 + m;
+      }
+      function getTodayISO() {
+        const d = new Date();
+        return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+      }
+
+      // ── Session dates ──
+      const SESI_A = [
+        "2026-03-07",
+        "2026-03-28",
+        "2026-04-11",
+        "2026-04-25",
+        "2026-05-09",
+      ];
+      const SESI_B = ["2026-05-23", "2026-06-06", "2026-06-20"];
+
+      function updateSessionDim() {
+        const today = getTodayISO();
+        const elA = document.getElementById("sesi-a");
+        const elB = document.getElementById("sesi-b");
+        if (SESI_A.includes(today)) {
+          elA.classList.remove("sesi-dim");
+          elB.classList.add("sesi-dim");
+        } else if (SESI_B.includes(today)) {
+          elB.classList.remove("sesi-dim");
+          elA.classList.add("sesi-dim");
+        } else {
+          elA.classList.remove("sesi-dim");
+          elB.classList.remove("sesi-dim");
+        }
+      }
+
+      // ── Row highlight ──
+      function updateRowHighlight() {
+        const today = getTodayISO();
+        const isKuliahDay = SESI_A.includes(today) || SESI_B.includes(today);
+        const now = new Date();
+        const curMin = now.getHours() * 60 + now.getMinutes();
+        document.querySelectorAll("tr[data-start]").forEach((tr) => {
+          if (isKuliahDay) {
+            const start = timeToMin(tr.dataset.start);
+            const end = timeToMin(tr.dataset.end);
+            tr.classList.toggle("tr-active", curMin >= start && curMin < end);
+          } else {
+            tr.classList.remove("tr-active");
+          }
+        });
+      }
+
+      // ── Realtime clock ──
+      function updateClock() {
+        const now = new Date();
+        document.getElementById("clock-hh").textContent = pad2(now.getHours());
+        document.getElementById("clock-mm").textContent = pad2(
+          now.getMinutes(),
+        );
+      }
+
+      // Init & interval
+      updateClock();
+      updateSessionDim();
+      updateRowHighlight();
+      setInterval(() => {
+        updateClock();
+        updateRowHighlight();
+      }, 1000);
+      // Re-check session dim at midnight
+      setInterval(updateSessionDim, 60000);
+    </script>
+  </body>
+</html>
