@@ -3,7 +3,7 @@
 import { useClock } from "@/hooks/useClock";
 
 export default function ClockBar() {
-  const { hh, mm } = useClock();
+  const { hh, mm, ss } = useClock();
 
   return (
     <div className="max-w-[1215px] mx-auto mb-6 flex items-center justify-center py-2">
@@ -11,6 +11,8 @@ export default function ClockBar() {
         <span>{hh}</span>
         <span className="text-accent mx-[0.05em] sep-blink"> : </span>
         <span>{mm}</span>
+        <span className="text-accent mx-[0.05em] sep-blink"> : </span>
+        <span>{ss}</span>
       </div>
     </div>
   );

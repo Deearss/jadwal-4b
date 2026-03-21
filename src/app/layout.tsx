@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,11 +23,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <Script
-        src="https://kit.fontawesome.com/184f34cb79.js"
-        crossOrigin="anonymous"
-        strategy="lazyOnload"
-      />
     </html>
   );
 }

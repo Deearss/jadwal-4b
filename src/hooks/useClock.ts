@@ -7,12 +7,16 @@ function pad2(n: number) {
 }
 
 export function useClock() {
-  const [time, setTime] = useState({ hh: "00", mm: "00" });
+  const [time, setTime] = useState({ hh: "00", mm: "00", ss: "00" });
 
   useEffect(() => {
     const update = () => {
       const now = new Date();
-      setTime({ hh: pad2(now.getHours()), mm: pad2(now.getMinutes()) });
+      setTime({
+        hh: pad2(now.getHours()),
+        mm: pad2(now.getMinutes()),
+        ss: pad2(now.getSeconds()),
+      });
     };
     update();
     const id = setInterval(update, 1000);
