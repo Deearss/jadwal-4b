@@ -1,0 +1,109 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { useScheduleStatus } from "@/hooks/useScheduleStatus";
+import TopBar from "./TopBar";
+import ClockBar from "./ClockBar";
+import JadwalCard from "./JadwalCard";
+
+export default function ScheduleView() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [zoomLevel, setZoomLevel] = useState(100);
+  const [loading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("Memproses...");
+
+  const { isSessionA, isSessionB, isRowActive } = useScheduleStatus();
+
+  function handleZoomIn() {
+    setZoomLevel((z) => Math.min(200, z + 10));
+  }
+  function handleZoomOut() {
+    setZoomLevel((z) => Math.max(40, z - 10));
+  }
+
+  async function captureCard(scale: number) {
+    if (!cardRef.current) throw new Error("Card tidak ditemukan");
+    const html2canvas = (await import("html2canvas-pro")).default;
+    return html2canvas(cardRef.current, {
+      scale,
+      backgroundColor: "#242318",
+      useCORS: true,
+      logging: false,
+    });
+  }
+
+  async function handleExportPNG() {
+    setLoadingText("Menyiapkan PNG...");
+    setLoading(true);
+    try {
+      const canvas = await captureCard(3);
+      const a = document.createElement("a");
+      a.download = "jadwal-TI-4B-2025-2026.png";
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+    } catch (e) {
+      alert("Gagal: " + (e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleExportPDF() {
+    setLoadingText("Menyiapkan PDF...");
+    setLoading(true);
+    try {
+      const { jsPDF } = await import("jspdf");
+      const canvas = await captureCard(2);
+      const img = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const pW = pdf.internal.pageSize.getWidth();
+      const pH = pdf.internal.pageSize.getHeight();
+      const ratio = canvas.width / canvas.height;
+      let w = pW - 10;
+      let h = w / ratio;
+      if (h > pH - 10) { h = pH - 10; w = h * ratio; }
+      pdf.addImage(img, "PNG", (pW - w) / 2, (pH - h) / 2, w, h);
+      pdf.save("jadwal-TI-4B-2025-2026.pdf");
+    } catch (e) {
+      alert("Gagal: " + (e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <>
+      {/* Loading overlay */}
+      {loading && (
+        <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-2.5 bg-[rgba(28,27,22,0.88)]">
+          <div className="spinner" />
+          <p className="text-[0.65rem] font-semibold tracking-[0.1em] uppercase text-accent">
+            {loadingText}
+          </p>
+        </div>
+      )}
+
+      <TopBar
+        zoomLevel={zoomLevel}
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        onExportPNG={handleExportPNG}
+        onExportPDF={handleExportPDF}
+      />
+
+      <ClockBar />
+
+      {/* Zoom wrapper */}
+      <div className="overflow-x-auto overflow-y-visible py-2">
+        <div className="w-fit mx-auto" style={{ zoom: zoomLevel / 100 }}>
+          <JadwalCard
+            ref={cardRef}
+            isSessionA={isSessionA}
+            isSessionB={isSessionB}
+            isRowActive={isRowActive}
+          />
+        </div>
+      </div>
+    </>
+  );
+}

@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1c1b16;
+  --color-surface: #242318;
+  --color-border: #2e2d22;
+  --color-subtle: #3a3929;
+  --color-accent: #d97757;
+  --color-prose: #e8e4d8;
+  --color-muted: #6b6756;
+  --color-teal: #2ec4b6;
+  --color-blue: #74b9ff;
+
+  --font-sans: "Inter", sans-serif;
+}
+
+/* rgba variants — tidak bisa dipakai di @theme karena bukan solid color */
+:root {
+  --accent-dim: rgba(217, 119, 87, 0.12);
+  --accent-mid: rgba(217, 119, 87, 0.35);
+  --blue-dim: rgba(116, 185, 255, 0.12);
+  --blue-mid: rgba(116, 185, 255, 0.3);
+  --teal-dim: rgba(46, 196, 182, 0.12);
+  --teal-mid: rgba(46, 196, 182, 0.3);
+}
+
+html {
+  font-size: 21.6px; /* 16px × 1.35 — semua rem ikut scale */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-subtle);
+  border-radius: 3px;
+}
+
+/* Animasi clock separator */
+@keyframes blink-sep {
+  50% {
+    opacity: 0;
+  }
+}
+.sep-blink {
+  animation: blink-sep 1s step-end infinite;
+}
+
+/* Animasi spinner loading */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Session dimming */
+.sesi-dim {
+  opacity: 0.22;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+/* Active row highlight — pakai !important karena override hover state tabel */
+.tr-active td {
+  background-color: var(--accent-dim) !important;
+  border-bottom-color: var(--accent-mid) !important;
+}
+.tr-active .td-time {
+  color: var(--color-accent) !important;
+}
+.tr-active .td-mapel {
+  color: var(--color-accent) !important;
+}
+.tr-active .ruang-tag {
+  background-color: var(--accent-dim) !important;
+  border-color: var(--accent-mid) !important;
+  color: var(--color-accent) !important;
+}
