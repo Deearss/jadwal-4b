@@ -7,7 +7,7 @@ function pad2(n: number) {
 }
 
 export function useClock() {
-  const [time, setTime] = useState({ hh: "00", mm: "00", ss: "00" });
+  const [time, setTime] = useState({ hh: "00", mm: "00", ss: "00", date: "" });
 
   useEffect(() => {
     const update = () => {
@@ -16,6 +16,12 @@ export function useClock() {
         hh: pad2(now.getHours()),
         mm: pad2(now.getMinutes()),
         ss: pad2(now.getSeconds()),
+        date: now.toLocaleDateString("id-ID", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }),
       });
     };
     update();

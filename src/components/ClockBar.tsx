@@ -3,10 +3,10 @@
 import { useClock } from "@/hooks/useClock";
 
 export default function ClockBar() {
-  const { hh, mm, ss } = useClock();
+  const { hh, mm, ss, date } = useClock();
 
   return (
-    <div className="max-w-[1215px] mx-auto mb-6 flex items-center justify-center py-2">
+    <div className="max-w-[1215px] mx-auto mb-6 flex flex-col items-center justify-center py-2 gap-1">
       <div className="text-[4.2rem] font-bold tracking-[0.06em] text-prose tabular-nums leading-none">
         <span>{hh}</span>
         <span className="text-accent mx-[0.05em] sep-blink"> : </span>
@@ -14,6 +14,11 @@ export default function ClockBar() {
         <span className="text-accent mx-[0.05em] sep-blink"> : </span>
         <span>{ss}</span>
       </div>
+      {date && (
+        <div className="text-[0.7rem] font-medium tracking-[0.06em] text-muted capitalize">
+          {date}
+        </div>
+      )}
     </div>
   );
 }

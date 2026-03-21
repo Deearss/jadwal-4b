@@ -1,3 +1,4 @@
+import { Utensils } from "lucide-react";
 import { SesiData, ScheduleRow } from "@/lib/schedule";
 
 interface SesiSectionProps {
@@ -37,7 +38,7 @@ function ScheduleRowItem({
       <tr className="border-b border-border">
         <td colSpan={4} className="px-3 py-[0.3rem]">
           <span className="text-[0.58rem] tracking-[0.1em] text-muted uppercase font-medium">
-            <i className="fa-solid fa-utensils mr-1.5 opacity-45" />
+            <Utensils size={10} className="mr-1.5 opacity-45" />
             {row.label}
           </span>
         </td>

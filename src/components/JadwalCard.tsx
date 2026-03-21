@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { Calendar } from "lucide-react";
 import { SESI_A, SESI_B } from "@/lib/schedule";
 import SesiSection from "./SesiSection";
 
@@ -44,7 +45,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
               </div>
               <div className="flex gap-1.5 mt-2 justify-end">
                 <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-accent border-[var(--accent-mid)] bg-[var(--accent-dim)]">
-                  <i className="fa-regular fa-calendar fa-xs" /> Sabtu
+                  <Calendar size={10} /> Sabtu
                 </span>
                 <span className="inline-flex items-center text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-muted border-border bg-transparent">
                   Ruang 4B
