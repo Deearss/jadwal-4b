@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useScheduleStatus } from "@/hooks/useScheduleStatus";
 import TopBar from "./TopBar";
 import ClockBar from "./ClockBar";
+import SubscribeForm from "./SubscribeForm";
 import JadwalCard from "./JadwalCard";
 
 export default function ScheduleView() {
@@ -99,6 +100,8 @@ export default function ScheduleView() {
       />
 
       <ClockBar />
+
+      <SubscribeForm />
 
       {/* Zoom wrapper */}
       <div className="overflow-x-auto overflow-y-visible py-2">

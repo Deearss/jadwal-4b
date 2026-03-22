@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.4",
     "html2canvas-pro": "^2.0.2",
     "jspdf": "^4.2.1",
     "lucide-react": "^0.577.0",
@@ -17,6 +18,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@netlify/functions": "^5.1.5",
     "@netlify/plugin-nextjs": "^5.15.9",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^20",
