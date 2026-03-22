@@ -25,27 +25,30 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
         {/* Header */}
         <div className="px-[1.8rem] pt-[1.6rem] pb-[1.3rem] border-b border-border">
           <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-3">
+            <div className="w-140 flex items-center justify-start gap-4">
               <Image
                 src="/images/fti-uniska-logo.png"
                 alt="Logo FTI UNISKA"
                 width={52}
                 height={52}
-                className="shrink-0 mt-0.5"
+                className="flex-1 h-full"
               />
-              <div>
-              <div className="text-[0.55rem] font-medium tracking-widest uppercase text-muted mb-2">
-                UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
-                &nbsp;·&nbsp; Prodi Teknik Informatika
-              </div>
-              <div className="text-[1.5rem] font-bold tracking-[-0.02em] text-prose leading-[1.15]">
-                Jadwal Kuliah <span className="text-accent">Kelas 4B</span>
-              </div>
-              <div className="text-[0.6rem] font-medium tracking-[0.08em] uppercase text-muted mt-[0.45rem]">
-                Non-Reguler &nbsp;·&nbsp; Banjarmasin
-              </div>
+              <div className="flex items-start gap-3 flex-7">
+                <div>
+                  <div className="text-[0.55rem] font-medium tracking-widest uppercase text-muted mb-2">
+                    UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
+                    &nbsp;·&nbsp; Prodi Teknik Informatika
+                  </div>
+                  <div className="text-[1.5rem] font-bold tracking-[-0.02em] text-prose leading-[1.15]">
+                    Jadwal Kuliah <span className="text-accent">Kelas 4B</span>
+                  </div>
+                  <div className="text-[0.6rem] font-medium tracking-[0.08em] uppercase text-muted mt-[0.45rem]">
+                    Non-Reguler &nbsp;·&nbsp; Banjarmasin
+                  </div>
+                </div>
               </div>
             </div>
+
             <div className="text-right shrink-0">
               <div className="text-[0.55rem] text-muted tracking-[0.05em] mb-[0.3rem]">
                 Semester Genap &nbsp;·&nbsp; Tahun Akademik
