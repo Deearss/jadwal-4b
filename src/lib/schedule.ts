@@ -25,8 +25,8 @@ export interface SesiData {
 export const SESI_A: SesiData = {
   id: "A",
   label: "Sabtu Ganjil",
-  dates: ["2026-03-07", "2026-03-28", "2026-04-11", "2026-04-25", "2026-05-09"],
-  displayDates: ["07 Mar", "28 Mar", "11 Apr", "25 Apr", "09 Mei"],
+  dates: ["2026-03-07", "2026-04-11", "2026-05-09", "2026-06-06"],
+  displayDates: ["07 Mar", "11 Apr", "09 Mei", "06 Jun"],
   rows: [
     {
       type: "class",
@@ -83,8 +83,8 @@ export const SESI_A: SesiData = {
 export const SESI_B: SesiData = {
   id: "B",
   label: "Sabtu Genap",
-  dates: ["2026-05-23", "2026-06-06", "2026-06-20"],
-  displayDates: ["23 Mei", "06 Jun", "20 Jun"],
+  dates: ["2026-03-28", "2026-04-25", "2026-05-23", "2026-06-20"],
+  displayDates: ["28 Mar", "25 Apr", "23 Mei", "20 Jun"],
   rows: [
     {
       type: "class",
