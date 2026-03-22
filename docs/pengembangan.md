@@ -18,6 +18,20 @@ Buka [http://localhost:3000](http://localhost:3000).
 
 > **Catatan:** Fitur subscription (Netlify Blobs + Brevo) tidak akan berfungsi di lokal tanpa konfigurasi tambahan. Fitur lainnya (tampilan jadwal, export, clock) berjalan normal.
 
+### Konfigurasi `.env` Lokal
+
+Salin `.env.example` ke `.env` dan sesuaikan nilainya:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Nilai lokal yang disarankan |
+|---|---|
+| `NEXT_PUBLIC_SUBSCRIBE_ENABLED` | `true` atau `false` — toggle form subscribe di UI |
+| `BREVO_API_KEY` | Opsional untuk lokal; hanya dibutuhkan saat scheduled function jalan |
+| `VERIFIED_SENDER_EMAIL` | Opsional untuk lokal |
+
 ---
 
 ## Mengubah Data Jadwal

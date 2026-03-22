@@ -89,12 +89,34 @@ File: `netlify/functions/send-notifications.mts`
 
 ### Environment Variables
 
-Disimpan di Netlify (bukan di-commit ke repo):
+Disimpan di Netlify (bukan di-commit ke repo). Lihat `.env.example` untuk template lengkap.
 
 | Variable | Keterangan |
 |---|---|
+| `NEXT_PUBLIC_SUBSCRIBE_ENABLED` | `"true"` untuk mengaktifkan seluruh fitur subscribe; nilai lain = nonaktif |
 | `BREVO_API_KEY` | API key Brevo (secret) |
 | `VERIFIED_SENDER_EMAIL` | Email pengirim yang sudah diverifikasi di Brevo |
+
+## Toggle Fitur Subscribe
+
+Seluruh fitur subscribe (form UI, API subscribe/unsubscribe, scheduled email) dapat dimatikan sekaligus dengan satu env var:
+
+```
+NEXT_PUBLIC_SUBSCRIBE_ENABLED=true   # aktif
+NEXT_PUBLIC_SUBSCRIBE_ENABLED=false  # nonaktif (atau hapus variabelnya)
+```
+
+**Efek saat dinonaktifkan (`false` atau tidak di-set):**
+- Form subscribe tidak muncul di halaman
+- `POST /api/subscribe` mengembalikan `503`
+- `GET /api/unsubscribe` mengembalikan `503`
+- Scheduled function `send-notifications` langsung berhenti tanpa kirim email
+
+**Cara menonaktifkan di Netlify:**
+1. Buka [app.netlify.com/projects/jadwal4b](https://app.netlify.com/projects/jadwal4b)
+2. Masuk ke **Site configuration → Environment variables**
+3. Ubah nilai `NEXT_PUBLIC_SUBSCRIBE_ENABLED` menjadi `false`
+4. Trigger redeploy
 
 ## Validasi Email
 

@@ -2,6 +2,9 @@ import { getStore } from "@netlify/blobs";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
+  if (process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED !== "true") {
+    return NextResponse.json({ error: "Fitur subscribe tidak aktif." }, { status: 503 });
+  }
   const { email } = await req.json();
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

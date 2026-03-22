@@ -87,6 +87,8 @@ async function sendEmail(to: string, subject: string, html: string) {
 }
 
 export default async function handler() {
+  if (process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED !== "true") return;
+
   const { timeStr, dateStr } = getWIBNow();
 
   // Tentukan sesi aktif hari ini

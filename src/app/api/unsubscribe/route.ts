@@ -2,6 +2,10 @@ import { getStore } from "@netlify/blobs";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
+  if (process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED !== "true") {
+    return new NextResponse("Fitur subscribe tidak aktif.", { status: 503 });
+  }
+
   const email = req.nextUrl.searchParams.get("email");
 
   if (!email) {

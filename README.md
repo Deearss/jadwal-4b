@@ -15,7 +15,7 @@ Website jadwal kuliah **Kelas 4B Non-Reguler** — Prodi Teknik Informatika, Fak
 | 🔍 Zoom In / Out | Tampilan jadwal bisa diperbesar (40%–200%) |
 | 🖼️ Export PNG | Unduh jadwal sebagai gambar resolusi tinggi |
 | 📄 Export PDF | Unduh jadwal dalam format PDF landscape A4 |
-| 🔔 Notifikasi Email | Subscribe untuk mendapat notifikasi tiap kali jadwal kuliah dimulai |
+| 🔔 Notifikasi Email | Subscribe untuk mendapat notifikasi tiap kali jadwal kuliah dimulai (dapat di-toggle via `.env`) |
 
 ---
 
@@ -38,6 +38,7 @@ Website jadwal kuliah **Kelas 4B Non-Reguler** — Prodi Teknik Informatika, Fak
 
 ```bash
 npm install
+cp .env.example .env   # sesuaikan nilainya
 npm run dev
 ```
 

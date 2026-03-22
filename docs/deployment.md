@@ -43,6 +43,7 @@ Diset langsung di Netlify Dashboard (tidak di-commit ke repo).
 
 | Variable | Scope | Keterangan |
 |---|---|---|
+| `NEXT_PUBLIC_SUBSCRIBE_ENABLED` | Runtime | `"true"` untuk mengaktifkan fitur subscribe; nilai lain = nonaktif |
 | `BREVO_API_KEY` | Functions, Runtime | API key Brevo — ditandai sebagai **secret** |
 | `VERIFIED_SENDER_EMAIL` | Functions, Runtime | Email pengirim notifikasi yang diverifikasi di Brevo |
 

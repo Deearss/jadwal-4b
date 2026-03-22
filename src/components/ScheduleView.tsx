@@ -101,7 +101,7 @@ export default function ScheduleView() {
 
       <ClockBar />
 
-      <SubscribeForm />
+      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && <SubscribeForm />}
 
       {/* Zoom wrapper */}
       <div className="overflow-x-auto overflow-y-visible py-2">
@@ -115,7 +115,7 @@ export default function ScheduleView() {
         </div>
       </div>
 
-      <SubscribeForm />
+      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && <SubscribeForm />}
     </>
   );
 }
