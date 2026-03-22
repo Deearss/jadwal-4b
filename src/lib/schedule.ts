@@ -42,7 +42,7 @@ export const SESI_A: SesiData = {
       end: "10:30",
       subject: "Sosial Budaya",
       abbreviation: "SOSBUD",
-      lecturer: "Nina M., M.Pd., M.Kom",
+      lecturer: "Nina Muidah, M.Pd., M.Kom",
     },
     {
       type: "class",
