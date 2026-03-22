@@ -24,8 +24,10 @@
   --teal-mid: rgba(46, 196, 182, 0.3);
 }
 
-html {
-  font-size: 21.6px; /* 16px × 1.35 — semua rem ikut scale */
+@layer base {
+  html {
+    font-size: 21.6px; /* 16px x 1.35 - semua rem ikut scale */
+  }
 }
 
 /* Scrollbar */

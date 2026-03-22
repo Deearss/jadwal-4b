@@ -37,9 +37,9 @@ function ScheduleRowItem({
 
   if (row.type === "ishoma") {
     return (
-      <tr className="border-b border-border text-center">
-        <td colSpan={4} className="px-3 pt-[0.3rem] pb-[0.6rem]">
-          <span className="relative text-[0.58rem] tracking-widest text-muted uppercase font-medium">
+      <tr className="bg-border text-center">
+        <td colSpan={4} className="px-3 h-16">
+          <span className="relative text-[0.7rem] tracking-widest text-muted uppercase font-bold">
             <Utensils
               size={14}
               className="mr-1.5 inline-flex relative -top-[0.5px]"
@@ -91,7 +91,7 @@ export default function SesiSection({
 
   return (
     <div
-      className={`px-[1.8rem] transition-opacity duration-400 ${isDimmed ? "sesi-dim" : ""}`}
+      className={`px-[1.8rem] border-2 border-border rounded-lg m-6 transition-opacity duration-400 ${isDimmed ? "sesi-dim" : ""}`}
     >
       {/* Sesi Header */}
       <div className="flex items-center gap-2.5 py-[1.1rem] pb-[0.8rem]">

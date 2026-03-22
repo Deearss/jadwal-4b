@@ -6,7 +6,7 @@ export default function ClockBar() {
   const { hh, mm, ss, date } = useClock();
 
   return (
-    <div className="max-w-303.75 mx-auto mb-6 flex flex-col items-center justify-center py-2 gap-1">
+    <div className="max-w-303.75 mx-auto mt-14 mb-10 flex flex-col items-center justify-center py-2 gap-1">
       <div className="text-[4.2rem] font-bold tracking-[0.06em] text-prose tabular-nums leading-none">
         <span>{hh}</span>
         <span className="text-accent mx-[0.05em] sep-blink"> : </span>

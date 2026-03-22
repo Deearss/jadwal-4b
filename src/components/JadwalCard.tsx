@@ -17,13 +17,13 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
     return (
       <div
         ref={ref}
-        className="relative w-290.25 bg-surface border border-border rounded-md overflow-hidden"
+        className="relative w-290.25 my-10 bg-surface border border-border rounded-md overflow-hidden"
       >
         {/* Accent line atas */}
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent" />
 
         {/* Header */}
-        <div className="px-[1.8rem] pt-[1.6rem] pb-[1.3rem] border-b border-border">
+        <div className="px-[1.8rem] pt-[1.6rem] pb-[1.3rem] mb-4 border-b border-border">
           <div className="flex items-start justify-between gap-4">
             <div className="w-140 flex items-center justify-start gap-4">
               <Image
@@ -76,7 +76,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
         />
 
         {/* Divider */}
-        <div className="h-px bg-border mx-[1.8rem]" />
+        {/* <div className="h-2 border-t-2 border-accent border-dashed mt-12 mb-10 mx-[1.8rem]" /> */}
 
         {/* Sesi B */}
         <SesiSection
