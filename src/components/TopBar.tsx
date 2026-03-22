@@ -48,7 +48,7 @@ export default function TopBar({
           onClick={onExportPNG}
           className="inline-flex items-center gap-1.5 font-sans text-[0.65rem] font-semibold tracking-[0.03em] py-[0.35rem] px-[0.8rem] rounded border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 hover:-translate-y-px"
         >
-          <ImageIcon size={12} /> Download PNG
+          <ImageIcon size={18} /> Download PNG
         </button>
 
         {/* PDF */}
@@ -56,7 +56,7 @@ export default function TopBar({
           onClick={onExportPDF}
           className="inline-flex items-center gap-1.5 font-sans text-[0.65rem] font-semibold tracking-[0.03em] py-[0.35rem] px-[0.8rem] rounded border cursor-pointer transition-all bg-(--blue-dim) border-(--blue-mid) text-blue hover:opacity-80 hover:-translate-y-px"
         >
-          <FileText size={12} /> Download PDF
+          <FileText size={18} /> Download PDF
         </button>
       </div>
     </div>
