@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jadwal4B
 
-## Getting Started
+Website jadwal kuliah **Kelas 4B Non-Reguler** — Prodi Teknik Informatika, Fakultas Teknologi Informasi, UNISKA Banjarmasin. Semester Genap (4) Tahun Akademik 2025/2026.
 
-First, run the development server:
+🌐 **Live:** [jadwal4b.netlify.app](https://jadwal4b.netlify.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Fitur
+
+- **Jam & Tanggal Real-Time** — menampilkan jam digital `HH : MM : SS` beserta tanggal hari ini dalam format Indonesia
+- **Highlight Otomatis** — baris mata kuliah yang sedang berlangsung otomatis ter-highlight; sesi yang tidak aktif akan di-_dim_
+- **Zoom In / Out** — tampilan jadwal bisa diperbesar atau diperkecil sesuai preferensi
+- **Export PNG** — unduh jadwal sebagai gambar dengan satu klik
+- **Export PDF** — unduh jadwal dalam format PDF landscape A4
+
+---
+
+## Tech Stack
+
+| Teknologi | Versi | Keterangan |
+|---|---|---|
+| [Next.js](https://nextjs.org) | 16.x | App Router + TypeScript |
+| [React](https://react.dev) | 19.x | — |
+| [Tailwind CSS](https://tailwindcss.com) | 4.x | Tanpa `tailwind.config.js` |
+| [lucide-react](https://lucide.dev) | 0.577.x | Ikon SVG |
+| [html2canvas-pro](https://github.com/niklasvh/html2canvas) | 2.x | Ekspor PNG |
+| [jsPDF](https://github.com/parallax/jsPDF) | 4.x | Ekspor PDF |
+
+---
+
+## Struktur Proyek
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout + metadata + Inter font
+│   ├── page.tsx            # Entry point (server component)
+│   └── globals.css         # Global styles + Tailwind + CSS variables
+├── components/
+│   ├── ScheduleView.tsx    # Client state manager (zoom, export, ref)
+│   ├── TopBar.tsx          # Logo + kontrol zoom + tombol export
+│   ├── ClockBar.tsx        # Jam & tanggal real-time
+│   ├── JadwalCard.tsx      # Card jadwal utama
+│   └── SesiSection.tsx     # Tabel per sesi (A / B)
+├── hooks/
+│   ├── useClock.ts         # Hook jam real-time (update tiap detik)
+│   └── useScheduleStatus.ts# Hook status sesi & highlight row aktif
+└── lib/
+    └── schedule.ts         # Data jadwal + type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Menjalankan Secara Lokal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Install dependensi
+npm install
 
-## Learn More
+# Jalankan development server
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proyek ini di-deploy otomatis ke **Netlify** setiap kali ada push ke branch `master`, menggunakan konfigurasi di [`netlify.toml`](netlify.toml).
