@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ImageIcon, FileText } from "lucide-react";
 
 interface TopBarProps {
@@ -21,16 +20,8 @@ export default function TopBar({
   return (
     <div className="flex items-center justify-between max-w-303.75 mx-auto mb-5 pb-[0.85rem] border-b border-border gap-3 flex-wrap">
       {/* Logo */}
-      <div className="flex items-center gap-2.5">
-        <Image
-          src="/images/fti-uniska-logo.png"
-          alt="Logo FTI UNISKA"
-          width={32}
-          height={32}
-        />
-        <div className="text-[1rem] font-bold tracking-[-0.01em] text-accent">
-          Jadwal<span className="text-muted font-normal">4B</span>
-        </div>
+      <div className="text-[1rem] font-bold tracking-[-0.01em] text-accent">
+        Jadwal<span className="text-muted font-normal">4B</span>
       </div>
 
       {/* Controls */}

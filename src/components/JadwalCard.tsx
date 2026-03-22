@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import Image from "next/image";
 import { Calendar } from "lucide-react";
 import { SESI_A, SESI_B } from "@/lib/schedule";
 import SesiSection from "./SesiSection";
@@ -24,7 +25,15 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
         {/* Header */}
         <div className="px-[1.8rem] pt-[1.6rem] pb-[1.3rem] border-b border-border">
           <div className="flex items-start justify-between gap-4">
-            <div>
+            <div className="flex items-start gap-3">
+              <Image
+                src="/images/fti-uniska-logo.png"
+                alt="Logo FTI UNISKA"
+                width={52}
+                height={52}
+                className="shrink-0 mt-0.5"
+              />
+              <div>
               <div className="text-[0.55rem] font-medium tracking-widest uppercase text-muted mb-2">
                 UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
                 &nbsp;·&nbsp; Prodi Teknik Informatika
@@ -34,6 +43,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
               </div>
               <div className="text-[0.6rem] font-medium tracking-[0.08em] uppercase text-muted mt-[0.45rem]">
                 Non-Reguler &nbsp;·&nbsp; Banjarmasin
+              </div>
               </div>
             </div>
             <div className="text-right shrink-0">
