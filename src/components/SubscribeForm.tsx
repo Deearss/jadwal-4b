@@ -37,7 +37,7 @@ export default function SubscribeForm() {
   };
 
   return (
-    <div className="max-w-303.75 mx-auto mb-5">
+    <div className="max-w-303.75 mx-auto mb-5 flex flex-col items-center">
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
         <input
           type="email"
