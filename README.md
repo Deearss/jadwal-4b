@@ -8,64 +8,57 @@ Website jadwal kuliah **Kelas 4B Non-Reguler** — Prodi Teknik Informatika, Fak
 
 ## Fitur
 
-- **Jam & Tanggal Real-Time** — menampilkan jam digital `HH : MM : SS` beserta tanggal hari ini dalam format Indonesia
-- **Highlight Otomatis** — baris mata kuliah yang sedang berlangsung otomatis ter-highlight; sesi yang tidak aktif akan di-_dim_
-- **Zoom In / Out** — tampilan jadwal bisa diperbesar atau diperkecil sesuai preferensi
-- **Export PNG** — unduh jadwal sebagai gambar dengan satu klik
-- **Export PDF** — unduh jadwal dalam format PDF landscape A4
+| Fitur | Keterangan |
+|---|---|
+| 🕐 Jam & Tanggal Real-Time | Format `HH : MM : SS` + tanggal bahasa Indonesia, update tiap detik |
+| ✨ Highlight Otomatis | Baris matkul aktif ter-highlight; sesi tidak aktif di-*dim* |
+| 🔍 Zoom In / Out | Tampilan jadwal bisa diperbesar (40%–200%) |
+| 🖼️ Export PNG | Unduh jadwal sebagai gambar resolusi tinggi |
+| 📄 Export PDF | Unduh jadwal dalam format PDF landscape A4 |
+| 🔔 Notifikasi Email | Subscribe untuk mendapat notifikasi tiap kali jadwal kuliah dimulai |
 
 ---
 
 ## Tech Stack
 
-| Teknologi | Versi | Keterangan |
-|---|---|---|
-| [Next.js](https://nextjs.org) | 16.x | App Router + TypeScript |
-| [React](https://react.dev) | 19.x | — |
-| [Tailwind CSS](https://tailwindcss.com) | 4.x | Tanpa `tailwind.config.js` |
-| [lucide-react](https://lucide.dev) | 0.577.x | Ikon SVG |
-| [html2canvas-pro](https://github.com/niklasvh/html2canvas) | 2.x | Ekspor PNG |
-| [jsPDF](https://github.com/parallax/jsPDF) | 4.x | Ekspor PDF |
-
----
-
-## Struktur Proyek
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout + metadata + Inter font
-│   ├── page.tsx            # Entry point (server component)
-│   └── globals.css         # Global styles + Tailwind + CSS variables
-├── components/
-│   ├── ScheduleView.tsx    # Client state manager (zoom, export, ref)
-│   ├── TopBar.tsx          # Logo + kontrol zoom + tombol export
-│   ├── ClockBar.tsx        # Jam & tanggal real-time
-│   ├── JadwalCard.tsx      # Card jadwal utama
-│   └── SesiSection.tsx     # Tabel per sesi (A / B)
-├── hooks/
-│   ├── useClock.ts         # Hook jam real-time (update tiap detik)
-│   └── useScheduleStatus.ts# Hook status sesi & highlight row aktif
-└── lib/
-    └── schedule.ts         # Data jadwal + type definitions
-```
+| Teknologi | Versi |
+|---|---|
+| [Next.js](https://nextjs.org) | 16.x |
+| [React](https://react.dev) | 19.x |
+| [Tailwind CSS](https://tailwindcss.com) | 4.x |
+| [lucide-react](https://lucide.dev) | 0.577.x |
+| [html2canvas-pro](https://github.com/niklasvh/html2canvas) | 2.x |
+| [jsPDF](https://github.com/parallax/jsPDF) | 4.x |
+| [@netlify/blobs](https://docs.netlify.com/blobs/overview/) | 10.x |
+| [Brevo](https://brevo.com) | API v3 |
 
 ---
 
 ## Menjalankan Secara Lokal
 
 ```bash
-# Install dependensi
 npm install
-
-# Jalankan development server
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser.
+Buka [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Dokumentasi
+
+Dokumentasi lengkap tersedia di folder [`docs/`](./docs/):
+
+| File | Isi |
+|---|---|
+| [`docs/arsitektur.md`](./docs/arsitektur.md) | Struktur proyek, komponen, dan sistem theming |
+| [`docs/fitur.md`](./docs/fitur.md) | Penjelasan detail tiap fitur |
+| [`docs/subscription.md`](./docs/subscription.md) | Fitur notifikasi email — flow, API, Brevo, Netlify Blobs |
+| [`docs/pengembangan.md`](./docs/pengembangan.md) | Cara mengubah data jadwal dan panduan kontribusi |
+| [`docs/deployment.md`](./docs/deployment.md) | Konfigurasi Netlify, env vars, dan scheduled function |
 
 ---
 
 ## Deploy
 
-Proyek ini di-deploy otomatis ke **Netlify** setiap kali ada push ke branch `master`, menggunakan konfigurasi di [`netlify.toml`](netlify.toml).
+Proyek ini di-deploy otomatis ke **Netlify** setiap push ke branch `master`. Konfigurasi build ada di [`netlify.toml`](./netlify.toml).
