@@ -46,7 +46,7 @@ export default function SubscribeForm() {
           placeholder="Email kamu untuk notifikasi jadwal..."
           disabled={status === "loading" || status === "success"}
           required
-          className="flex-1 max-w-xs bg-surface border border-border rounded px-3 py-1.5 text-[0.7rem] text-prose placeholder:text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+          className="w-80 bg-surface border border-border rounded px-3 py-1.5 text-[0.7rem] text-prose placeholder:text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
         />
         <button
           type="submit"
