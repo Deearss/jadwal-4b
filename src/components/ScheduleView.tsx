@@ -9,18 +9,10 @@ import JadwalCard from "./JadwalCard";
 
 export default function ScheduleView() {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [zoomLevel, setZoomLevel] = useState(100);
   const [loading, setLoading] = useState(false);
   const [loadingText, setLoadingText] = useState("Memproses...");
 
   const { isSessionA, isSessionB, isRowActive } = useScheduleStatus();
-
-  function handleZoomIn() {
-    setZoomLevel((z) => Math.min(200, z + 10));
-  }
-  function handleZoomOut() {
-    setZoomLevel((z) => Math.max(40, z - 10));
-  }
 
   async function captureCard(scale: number) {
     if (!cardRef.current) throw new Error("Card tidak ditemukan");
@@ -91,21 +83,14 @@ export default function ScheduleView() {
         </div>
       )}
 
-      <TopBar
-        zoomLevel={zoomLevel}
-        onZoomIn={handleZoomIn}
-        onZoomOut={handleZoomOut}
-        onExportPNG={handleExportPNG}
-        onExportPDF={handleExportPDF}
-      />
+      <TopBar onExportPNG={handleExportPNG} onExportPDF={handleExportPDF} />
 
       <ClockBar />
 
       {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && <SubscribeForm />}
 
-      {/* Zoom wrapper */}
       <div className="overflow-x-auto overflow-y-visible py-2">
-        <div className="w-fit mx-auto" style={{ zoom: zoomLevel / 100 }}>
+        <div className="w-fit mx-auto">
           <JadwalCard
             ref={cardRef}
             isSessionA={isSessionA}

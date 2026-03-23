@@ -5,20 +5,11 @@ import { ImageIcon, FileText, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TopBarProps {
-  zoomLevel: number;
-  onZoomIn: () => void;
-  onZoomOut: () => void;
   onExportPNG: () => void;
   onExportPDF: () => void;
 }
 
-export default function TopBar({
-  zoomLevel,
-  onZoomIn,
-  onZoomOut,
-  onExportPNG,
-  onExportPDF,
-}: TopBarProps) {
+export default function TopBar({ onExportPNG, onExportPDF }: TopBarProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,23 +23,6 @@ export default function TopBar({
 
         {/* Desktop controls */}
         <div className="hidden sm:flex gap-2 items-center">
-          {/* Zoom */}
-          <div className="flex items-center gap-0.5 bg-surface border border-border rounded px-1.5 py-0.5 text-[0.6rem] text-muted">
-            <button
-              onClick={onZoomOut}
-              className="bg-none border-none text-accent text-[0.85rem] cursor-pointer px-1.75 py-0.5 rounded font-sans hover:bg-(--accent-dim) transition-colors"
-            >
-              −
-            </button>
-            <span className="min-w-8.5 text-center">{zoomLevel}%</span>
-            <button
-              onClick={onZoomIn}
-              className="bg-none border-none text-accent text-[0.85rem] cursor-pointer px-1.75 py-0.5 rounded font-sans hover:bg-(--accent-dim) transition-colors"
-            >
-              +
-            </button>
-          </div>
-
           <button
             onClick={onExportPNG}
             className="inline-flex items-center gap-1.5 font-sans text-[0.65rem] font-semibold tracking-[0.03em] py-[0.35rem] px-[0.8rem] rounded border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 hover:-translate-y-px"
@@ -108,54 +82,22 @@ export default function TopBar({
 
         {/* Sidebar content */}
         <div className="flex flex-col">
-          {/* Zoom */}
-          <div className="flex items-center justify-between gap-2 p-4">
-            <span className="text-[0.55rem] font-semibold tracking-widest uppercase text-muted">
-              Ukuran Jadwal :
-            </span>
-            <div className="flex items-center gap-0.5 bg-background border border-border rounded px-1.5 py-0.5 text-[0.6rem] text-muted w-fit">
-              <button
-                onClick={onZoomOut}
-                className="bg-none border-none text-accent text-[0.85rem] cursor-pointer px-1.75 py-0.5 rounded font-sans hover:bg-(--accent-dim) transition-colors"
-              >
-                −
-              </button>
-              <span className="min-w-8.5 text-center">{zoomLevel}%</span>
-              <button
-                onClick={onZoomIn}
-                className="bg-none border-none text-accent text-[0.85rem] cursor-pointer px-1.75 py-0.5 rounded font-sans hover:bg-(--accent-dim) transition-colors"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="h-px bg-border" />
-
           {/* Downloads */}
           <div className="flex flex-col gap-2 p-4">
             <span className="text-[0.55rem] font-semibold tracking-widest uppercase text-muted">
               Unduh Jadwal :
             </span>
 
-            {/* the buttons */}
             <div className="flex gap-1.5">
               <button
-                onClick={() => {
-                  onExportPNG();
-                  setOpen(false);
-                }}
+                onClick={() => { onExportPNG(); setOpen(false); }}
                 className="inline-flex flex-col flex-1 justify-center items-start gap-1.5 font-sans text-[0.55rem] font-semibold tracking-[0.03em] py-2 px-2 rounded border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 active:opacity-60"
               >
                 <ImageIcon className="size-4.5" /> Download PNG file
               </button>
 
               <button
-                onClick={() => {
-                  onExportPDF();
-                  setOpen(false);
-                }}
+                onClick={() => { onExportPDF(); setOpen(false); }}
                 className="inline-flex flex-col flex-1 justify-center items-start gap-1.5 font-sans text-[0.55rem] font-semibold tracking-[0.03em] py-2 px-2 rounded border cursor-pointer transition-all bg-(--blue-dim) border-(--blue-mid) text-blue hover:opacity-80 active:opacity-60"
               >
                 <FileText className="size-4.5" /> Download PDF file
@@ -163,8 +105,6 @@ export default function TopBar({
             </div>
           </div>
 
-          {/* Other Menu */}
-          {/* Divider */}
           <div className="h-px bg-border" />
         </div>
       </div>

@@ -31,19 +31,7 @@ Sistem otomatis mendeteksi sesi dan mata kuliah yang sedang berlangsung.
 
 ---
 
-## 3. Zoom In / Out
-
-Tampilan kartu jadwal bisa diperbesar atau diperkecil.
-
-- **Range:** 40% — 200%
-- **Step:** ±10% per klik
-- **Implementasi:** menggunakan CSS property `zoom` pada wrapper div
-
-**Kontrol:** tombol `−` dan `+` di TopBar.
-
----
-
-## 4. Export PNG
+## 3. Export PNG
 
 Mengunduh jadwal sebagai gambar PNG resolusi tinggi.
 
@@ -54,7 +42,7 @@ Mengunduh jadwal sebagai gambar PNG resolusi tinggi.
 
 ---
 
-## 5. Export PDF
+## 4. Export PDF
 
 Mengunduh jadwal dalam format PDF landscape A4.
 
@@ -68,6 +56,6 @@ Mengunduh jadwal dalam format PDF landscape A4.
 
 ---
 
-## 6. Notifikasi Email (Subscribe)
+## 5. Notifikasi Email (Subscribe)
 
 Lihat dokumentasi lengkap di [`subscription.md`](./subscription.md).
