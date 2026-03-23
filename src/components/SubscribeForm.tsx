@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Bell, CheckCircle } from "lucide-react";
+import clsx from "clsx";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -15,6 +16,7 @@ function validateEmail(email: string): string | null {
   return null;
 }
 
+// Form subscribe notifikasi email — muncul di atas dan bawah kartu jadwal.
 export default function SubscribeForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -59,7 +61,14 @@ export default function SubscribeForm() {
   };
 
   return (
-    <div className="max-w-303.75 mx-auto mb-5 flex flex-col items-center gap-2">
+    // Container — full width di mobile dengan padding sisi, dibatasi max-width di desktop
+    <div
+      className={clsx(
+        "xl:max-w-303.75",
+        "lg:max-w-2xl",
+        "w-full px-8 mx-auto mb-5 flex flex-col items-center gap-2",
+      )}
+    >
       {/* Heading */}
       <div className="text-center mb-1">
         <p className="text-[0.75rem] font-semibold text-prose">
@@ -71,8 +80,15 @@ export default function SubscribeForm() {
         </p>
       </div>
 
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+      {/* Form — horizontal di laptop/desktop, vertikal di mobile */}
+      <form
+        onSubmit={handleSubmit}
+        className={clsx(
+          "xl:flex-row xl:w-auto",
+          "lg:flex-row lg:w-auto",
+          "flex flex-col w-full items-stretch gap-2",
+        )}
+      >
         <input
           type="email"
           value={email}
@@ -80,7 +96,11 @@ export default function SubscribeForm() {
           placeholder="contoh: namakamu@gmail.com"
           disabled={status === "loading" || status === "success"}
           required
-          className={`w-80 bg-surface border rounded px-3 py-1.5 text-[0.7rem] text-prose placeholder:text-muted focus:outline-none transition-colors disabled:opacity-50 ${validationError ? "border-red-500/60 focus:border-red-400" : "border-border focus:border-accent"}`}
+          className={clsx(
+            "xl:w-80",
+            "lg:w-72",
+            `w-full bg-surface border rounded px-3 py-1.5 text-[0.7rem] text-prose placeholder:text-muted focus:outline-none transition-colors disabled:opacity-50 ${validationError ? "border-red-500/60 focus:border-red-400" : "border-border focus:border-accent"}`,
+          )}
         />
         <button
           type="submit"
@@ -90,7 +110,11 @@ export default function SubscribeForm() {
             status === "loading" ||
             status === "success"
           }
-          className="inline-flex items-center gap-1.5 font-sans text-[0.65rem] font-semibold tracking-[0.03em] py-[0.35rem] px-[0.8rem] rounded border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
+          className={clsx(
+            "xl:w-auto",
+            "lg:w-auto",
+            "w-full inline-flex justify-center items-center gap-1.5 font-sans text-[0.65rem] font-semibold tracking-[0.03em] py-[0.35rem] px-[0.8rem] rounded border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed",
+          )}
         >
           {status === "success" ? (
             <>
