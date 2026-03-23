@@ -33,27 +33,4 @@ chore: install clsx dan tailwind-merge untuk utilitas cn()
 
 ## Deployment
 
-Proyek ini di-deploy di **Netlify** secara otomatis setiap kali ada push ke branch `master`.
-
-- **URL produksi:** https://jadwal4b.netlify.app
-- **Branch deploy:** `master`
-- **Build command:** `npm run build`
-- **Plugin:** `@netlify/plugin-nextjs` (wajib untuk SSR & API routes)
-
-### Environment Variables
-
-Set di dashboard Netlify (jangan di-commit ke repo):
-
-| Variable | Keterangan |
-|---|---|
-| `NEXT_PUBLIC_SUBSCRIBE_ENABLED` | `"true"` untuk aktifkan fitur subscribe |
-| `BREVO_API_KEY` | API key Brevo untuk kirim email |
-| `NETLIFY_BLOBS_*` | Otomatis tersedia di Netlify |
-
-### Sebelum push, pastikan build lokal berhasil
-
-```bash
-npm run build
-```
-
-Kalau build lokal gagal, Netlify juga akan gagal deploy.
+Lihat [`deployment.md`](./deployment.md) untuk panduan lengkap deployment, environment variables, dan cara memantau scheduled function.

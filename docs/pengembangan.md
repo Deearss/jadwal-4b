@@ -146,17 +146,3 @@ curl -X POST https://jadwal4b.netlify.app/api/subscribe \
   -d '{"email": "contoh@gmail.com"}'
 ```
 
----
-
-## Struktur Commit
-
-Proyek ini menggunakan format commit message deskriptif berbahasa Indonesia dengan prefix konvensional:
-
-| Prefix | Kapan digunakan |
-|---|---|
-| `feat:` | Fitur baru |
-| `fix:` | Perbaikan bug |
-| `style:` | Perubahan tampilan/CSS |
-| `refactor:` | Restrukturisasi kode |
-| `docs:` | Perubahan dokumentasi |
-| `chore:` | Konfigurasi, dependency, dll |
