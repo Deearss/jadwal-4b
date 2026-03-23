@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import Image from "next/image";
-import { Calendar } from "lucide-react";
+import { CalendarClock } from "lucide-react";
 import clsx from "clsx";
 import { SESI_A, SESI_B } from "@/lib/schedule";
 import SesiSection from "./SesiSection";
@@ -108,8 +108,8 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
                   "flex gap-1.5 mt-2",
                 )}
               >
-                <span className="inline-flex items-center gap-1 text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-accent border-(--accent-mid) bg-(--accent-dim)">
-                  <Calendar size={14} className="relative -top-[1.5px]" /> Sabtu
+                <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-accent border-(--accent-mid) bg-(--accent-dim)">
+                  <CalendarClock className="relative size-3.5" /> Sabtu
                 </span>
                 <span className="inline-flex items-center text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-muted border-border bg-transparent">
                   Ruang 4B

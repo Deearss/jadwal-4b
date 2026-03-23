@@ -91,7 +91,7 @@ export default function SesiSection({
 
   return (
     <div
-      className={`px-[1.8rem] border-2 border-border rounded-lg m-6 transition-opacity duration-400 ${isDimmed ? "sesi-dim" : ""}`}
+      className={`px-[1.8rem] border-2 border-dashed border-border rounded-lg m-6 transition-opacity duration-400 ${isDimmed ? "sesi-dim" : ""}`}
     >
       {/* Sesi Header */}
       <div className="flex items-center gap-2.5 py-[1.1rem] pb-[0.8rem]">
@@ -117,7 +117,7 @@ export default function SesiSection({
       </div>
 
       {/* Table */}
-      <table className="w-full border-collapse mb-[1.4rem]">
+      <table className="w-full border-collapse mb-1.5">
         <thead>
           <tr>
             <th className="text-[0.55rem] font-semibold tracking-widest uppercase text-muted py-2 px-3 border-b border-border text-left">

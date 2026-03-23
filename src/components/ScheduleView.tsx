@@ -87,10 +87,12 @@ export default function ScheduleView() {
 
       <ClockBar />
 
-      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && <SubscribeForm />}
+      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && (
+        <SubscribeForm />
+      )}
 
-      <div className="overflow-x-auto overflow-y-visible py-2">
-        <div className="w-fit mx-auto">
+      <div className="overflow-x-auto overflow-y-visible py-2 max-w-5xl mx-auto">
+        <div className="">
           <JadwalCard
             ref={cardRef}
             isSessionA={isSessionA}
@@ -100,7 +102,9 @@ export default function ScheduleView() {
         </div>
       </div>
 
-      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && <SubscribeForm />}
+      {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && (
+        <SubscribeForm />
+      )}
     </>
   );
 }

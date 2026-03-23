@@ -27,17 +27,22 @@
 @layer base {
   html {
     font-size: 14px;
-  } /* mobile  */
+  }
+  /* mobile  */
+
   @media (min-width: 1024px) {
     html {
       font-size: 17px;
     }
-  } /* laptop  */
-  @media (min-width: 1280px) {
+  }
+  /* laptop  */
+
+  /* @media (min-width: 1280px) {
     html {
       font-size: 21.6px;
     }
-  } /* desktop */
+  } */
+  /* desktop */
 }
 
 /* Scrollbar */
