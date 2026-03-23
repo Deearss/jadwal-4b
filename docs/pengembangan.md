@@ -100,6 +100,40 @@ import { Inter } from "next/font/google";
 import { Plus_Jakarta_Sans } from "next/font/google";
 ```
 
+### Responsivitas
+
+Breakpoint yang digunakan mengikuti default Tailwind CSS v4:
+
+| Nama | Min-width | Target device |
+|------|-----------|---------------|
+| *(base)* | — | Mobile |
+| `lg` | 1024px | Laptop |
+| `xl` | 1280px | Desktop |
+
+**Pola clsx:** setiap elemen yang perlu menyesuaikan tampilan antar device menggunakan `clsx` dengan 3 parameter terpisah — masing-masing satu breakpoint:
+
+```tsx
+<div
+  className={clsx(
+    "xl:px-[1.8rem] xl:pt-[1.6rem]",   // desktop
+    "lg:px-6 lg:pt-5",                  // laptop
+    "px-4 pt-4 border-b border-border", // mobile + class statis
+  )}
+/>
+```
+
+**Skala font global:** root `font-size` di `globals.css` dikonfigurasi responsif sehingga seluruh nilai `rem` di komponen ikut terskala secara proporsional:
+
+```css
+@layer base {
+  html { font-size: 14px; }                                     /* mobile  */
+  @media (min-width: 1024px) { html { font-size: 17px; } }     /* laptop  */
+  @media (min-width: 1280px) { html { font-size: 21.6px; } }   /* desktop */
+}
+```
+
+**Komentar komponen:** tambahkan komentar hanya pada scope menengah ke atas (definisi komponen & blok section besar di JSX) — hindari komentar pada elemen individual agar tidak polusi.
+
 ---
 
 ## Menambah Subscriber Secara Manual
