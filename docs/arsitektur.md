@@ -78,3 +78,5 @@ Tailwind v4 digunakan **tanpa** `tailwind.config.js`. Semua custom token warna d
 ```
 
 Variabel berbasis `rgba` (yang tidak bisa masuk `@theme`) diletakkan di `:root` biasa.
+
+Untuk konvensi responsivitas (breakpoint, pola `clsx`, skala font), lihat [`responsivitas.md`](./responsivitas.md).

@@ -26,8 +26,18 @@
 
 @layer base {
   html {
-    font-size: 21.6px; /* 16px x 1.35 - semua rem ikut scale */
-  }
+    font-size: 14px;
+  } /* mobile  */
+  @media (min-width: 1024px) {
+    html {
+      font-size: 17px;
+    }
+  } /* laptop  */
+  @media (min-width: 1280px) {
+    html {
+      font-size: 21.6px;
+    }
+  } /* desktop */
 }
 
 /* Scrollbar */
