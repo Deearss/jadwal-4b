@@ -35,7 +35,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
           className={clsx(
             "xl:px-[1.8rem] xl:pt-[1.6rem] xl:pb-[1.3rem]",
             "lg:px-6 lg:pt-5 lg:pb-4",
-            "px-4 pt-4 pb-3 mb-4 border-b border-border",
+            "px-14 pt-6 pb-8 mb-4 border-b border-border",
           )}
         >
           {/* Header inner — logo+judul di kiri, info semester di kanan */}
@@ -43,34 +43,47 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
             className={clsx(
               "xl:flex-row xl:items-start xl:justify-between",
               "lg:flex-row lg:items-start lg:justify-between",
-              "flex flex-col gap-4",
+              "flex flex-col items-center gap-6",
             )}
           >
             {/* Kiri: logo FTI UNISKA + nama institusi + judul kelas */}
             <div
               className={clsx(
-                "xl:w-140",
-                "lg:flex-1",
-                "flex items-center gap-4",
+                "xl:w-140 xl:flex-row xl:items-center xl:text-left",
+                "lg:flex-1 lg:flex-row lg:items-center lg:text-left",
+                "flex flex-col items-center gap-3 text-center",
               )}
             >
               <Image
                 src="/images/fti-uniska-logo.png"
                 alt="Logo FTI UNISKA"
-                width={52}
-                height={52}
-                className="shrink-0"
+                width={72}
+                height={72}
+                className={clsx(
+                  "xl:w-13 xl:h-13",
+                  "lg:w-13 lg:h-13",
+                  "w-18 h-18 shrink-0",
+                )}
               />
               <div>
                 <div className="text-[0.55rem] font-medium tracking-widest uppercase text-muted mb-2">
-                  UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
-                  &nbsp;·&nbsp; Prodi Teknik Informatika
+                  <span className="lg:hidden block">UNISKA Banjarmasin</span>
+                  <span className="lg:hidden block">
+                    Fakultas Teknologi Informasi
+                  </span>
+                  <span className="lg:hidden block">
+                    Prodi Teknik Informatika
+                  </span>
+                  <span className="hidden lg:inline">
+                    UNISKA BJM &nbsp;·&nbsp; Fakultas Teknologi Informasi
+                    &nbsp;·&nbsp; Prodi Teknik Informatika
+                  </span>
                 </div>
                 <div
                   className={clsx(
                     "xl:text-[1.5rem]",
-                    "lg:text-[1.3rem]",
-                    "text-[1.1rem] font-bold tracking-[-0.02em] text-prose leading-[1.15]",
+                    "lg:text-[1.3rem] lg:mt-0",
+                    "text-[1.1rem] mt-8 font-bold tracking-[-0.02em] text-prose leading-[1.15]",
                   )}
                 >
                   Jadwal Kuliah <span className="text-accent">Kelas 4B</span>
@@ -86,7 +99,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
               className={clsx(
                 "xl:text-right xl:shrink-0",
                 "lg:text-right lg:shrink-0",
-                "text-left",
+                "text-center",
               )}
             >
               <div className="text-[0.55rem] text-muted tracking-[0.05em] mb-[0.3rem]">
@@ -105,7 +118,7 @@ const JadwalCard = forwardRef<HTMLDivElement, JadwalCardProps>(
                 className={clsx(
                   "xl:justify-end",
                   "lg:justify-end",
-                  "flex gap-1.5 mt-2",
+                  "flex gap-1.5 mt-2 justify-center",
                 )}
               >
                 <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-semibold tracking-[0.06em] uppercase py-[0.22rem] px-[0.65rem] rounded-sm border text-accent border-(--accent-mid) bg-(--accent-dim)">
