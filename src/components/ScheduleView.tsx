@@ -6,6 +6,7 @@ import TopBar from "./TopBar";
 import ClockBar from "./ClockBar";
 import SubscribeForm from "./SubscribeForm";
 import JadwalCard from "./JadwalCard";
+import ELearningCTA from "./ELearningCTA";
 
 export default function ScheduleView() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -101,6 +102,8 @@ export default function ScheduleView() {
           />
         </div>
       </div>
+
+      <ELearningCTA />
 
       {process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === "true" && (
         <SubscribeForm />
