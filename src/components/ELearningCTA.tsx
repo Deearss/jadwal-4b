@@ -20,7 +20,7 @@ export default function ELearningCTA() {
         {/* E-Learning */}
         <div className="relative inline-block group">
           <Link
-            href={process.env.NEXT_PUBLIC_ELEARNING_LINK!}
+            href={process.env.NEXT_PUBLIC_ELEARNING_LINK || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-sans text-[0.9rem] font-semibold tracking-[0.02em] py-3 px-6 rounded-lg border cursor-pointer transition-all bg-(--accent-dim) border-(--accent-mid) text-accent hover:opacity-80 hover:-translate-y-px"
@@ -37,7 +37,7 @@ export default function ELearningCTA() {
         {/* Google Drive */}
         <div className="relative inline-block group">
           <Link
-            href={process.env.NEXT_PUBLIC_GOOGLE_DRIVE_LINK!}
+            href={process.env.NEXT_PUBLIC_GOOGLE_DRIVE_LINK || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-sans text-[0.9rem] font-semibold tracking-[0.02em] py-3 px-6 rounded-lg border cursor-pointer transition-all bg-(--blue-dim) border-(--blue-mid) text-blue hover:opacity-80 hover:-translate-y-px"
