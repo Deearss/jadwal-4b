@@ -108,7 +108,7 @@ export const SESI_B: SesiData = {
       end: "12:10",
       subject: "Pemr. Berbasis Objek 1",
       abbreviation: "PBO 1",
-      lecturer: "M. Edya R., M.Kom",
+      lecturer: "M. Edya Rosadi, M.Kom",
     },
     {
       type: "class",

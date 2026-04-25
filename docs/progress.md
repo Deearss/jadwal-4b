@@ -11,6 +11,7 @@
 ## Sudah Selesai (Done)
 - [x] Rilis awal website jadwal (v1)
 - [x] Koreksi nama dosen mata kuliah "Filsafat Ilmu" menjadi "Riza Fahlipi"
+- [x] Lengkapi nama dosen mata kuliah "PBO 1" menjadi "M. Edya Rosadi, M.Kom"
 
 ## Selanjutnya (Next)
 - Memantau penggunaan dan *feedback* dari user.
