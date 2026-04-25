@@ -100,7 +100,7 @@ export const SESI_B: SesiData = {
       end: "10:30",
       subject: "Filsafat Ilmu",
       abbreviation: "FILSAFAT",
-      lecturer: "Abdullah, M.Pd",
+      lecturer: "Riza Fahlipi",
     },
     {
       type: "class",
